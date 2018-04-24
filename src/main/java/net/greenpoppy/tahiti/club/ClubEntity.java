@@ -7,6 +7,7 @@ import javax.persistence.*;
 import lombok.*;
 
 import net.greenpoppy.tahiti.berth.BerthEntity;
+import net.greenpoppy.tahiti.entity.BaseEntity;
 import net.greenpoppy.tahiti.member.MemberEntity;
 
 
@@ -17,6 +18,7 @@ import net.greenpoppy.tahiti.member.MemberEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClubEntity
+    extends BaseEntity
     implements Serializable {
 
     @Id

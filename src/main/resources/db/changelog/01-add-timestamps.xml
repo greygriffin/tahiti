@@ -1,0 +1,38 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="01" author="">
+        <addColumn tableName="clubs">
+            <column name="created_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Types.TIMESTAMP"/>
+        </addColumn>
+        <addColumn tableName="berths">
+            <column name="created_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Types.TIMESTAMP"/>
+        </addColumn>
+        <addColumn tableName="users">
+            <column name="created_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Types.TIMESTAMP"/>
+        </addColumn>
+        <addColumn tableName="boats">
+            <column name="created_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Types.TIMESTAMP"/>
+        </addColumn>
+        <addColumn tableName="berth_assignments">
+            <column name="created_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="java.sql.Types.TIMESTAMP"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
