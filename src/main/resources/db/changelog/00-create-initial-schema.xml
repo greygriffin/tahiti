@@ -1,0 +1,86 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="00" author="">
+        <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
+        <createTable tableName="clubs">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="abbreviation" type="varchar(4)" remarks="e.g. MVS,HMVK">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+        <createTable tableName="berths">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="club_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_berth_club" referencedTableName="clubs" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <createTable tableName="users">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street_address" type="varchar(255)"/>
+            <column name="post_code" type="varchar(255)"/>
+            <column name="city" type="varchar(255)"/>
+            <column name="country" type="varchar(255)"/>
+            <column name="phone_number" type="varchar(255)"/>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="club_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_member_club" referencedTableName="clubs" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <createTable tableName="boats">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="model" type="varchar(255)"/>
+            <column name="registration_number" type="varchar(255)"/>
+            <column name="length" type="float"/>
+            <column name="width" type="float"/>
+            <column name="owner_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_boat_owner" referencedTableName="users" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <createTable tableName="berth_assignments">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="guard_duty" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="owner_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_berthassignment_owner" referencedTableName="users" referencedColumnNames="id"/>
+            </column>
+            <column name="berth_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_berthassignment_berth" referencedTableName="berths" referencedColumnNames="id"/>
+            </column>
+            <column name="boat_id" type="int">
+                <constraints foreignKeyName="fk_berthassignment_boat" referencedTableName="boats" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
