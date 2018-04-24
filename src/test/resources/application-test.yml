@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  h2:
+    console:
+      enabled: true
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.xml
+  datasource:
+    url: jdbc:hsqldb:mem:dataSource
+    driverClassName: org.hsqldb.jdbcDriver
+    username: tahiti_test
+    password: tahiti_test

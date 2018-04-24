@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      temp:
+        use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tahiti
+    driverClassName: org.postgresql.Driver
+    username: tahiti_test
+    password: tahiti_test
