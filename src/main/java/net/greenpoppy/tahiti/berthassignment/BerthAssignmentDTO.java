@@ -2,6 +2,8 @@ package net.greenpoppy.tahiti.berthassignment;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Value;
 
@@ -25,4 +27,17 @@ public class BerthAssignmentDTO {
 
     @NotNull
     Boolean guardDuty;
+
+    @JsonCreator
+    public BerthAssignmentDTO(@JsonProperty("id") Integer id,
+                              @JsonProperty("boatId") Integer boatId,
+                              @JsonProperty("berthId") Integer berthId,
+                              @JsonProperty("ownerId") Integer ownerId,
+                              @JsonProperty("guardDuty") Boolean guardDuty) {
+        this.id = id;
+        this.boatId = boatId;
+        this.berthId = berthId;
+        this.ownerId = ownerId;
+        this.guardDuty = guardDuty;
+    }
 }

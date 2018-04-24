@@ -6,5 +6,5 @@ import lombok.Value;
 // Similar to Optional, but IntelliJ Idea doesn't like you using Optional
 @Value
 public class Update<T> {
-    private final T value;
+    T value;
 }

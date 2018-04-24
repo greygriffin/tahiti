@@ -29,7 +29,9 @@ class ClubDTO {
     // Don't include a list of berths, there are too many
 
     @JsonCreator
-    public ClubDTO(@JsonProperty("id") Integer id, @JsonProperty("name") String name, @JsonProperty("abbreviation") String abbreviation) {
+    public ClubDTO(@JsonProperty("id") Integer id,
+                   @JsonProperty("name") String name,
+                   @JsonProperty("abbreviation") String abbreviation) {
         this.id = id;
         this.name = name;
         this.abbreviation = abbreviation;
