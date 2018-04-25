@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -13,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
+import net.greenpoppy.tahiti.resource.OnCreate;
 import net.greenpoppy.tahiti.resource.OnUpdate;
 
 
@@ -22,7 +24,7 @@ import net.greenpoppy.tahiti.resource.OnUpdate;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MemberDTO {
 
-    @NotNull(groups = OnUpdate.class)
+    @Null(groups = OnCreate.class)
     Integer id;
 
     @NotBlank
@@ -55,9 +57,14 @@ public class MemberDTO {
 
     List<Integer> berthAssignmentIds;
 
+    @Null(groups = OnCreate.class)
+    String createdAt;
+
+    @Null(groups = OnCreate.class)
+    String updatedAt;
+
     @JsonCreator
-    public MemberDTO(@JsonProperty("id") Integer id,
-                     @JsonProperty("firstName") String firstName,
+    public MemberDTO(@JsonProperty("firstName") String firstName,
                      @JsonProperty("lastName") String lastName,
                      @JsonProperty("streetAddress") String streetAddress,
                      @JsonProperty("postCode") String postCode,
@@ -67,7 +74,7 @@ public class MemberDTO {
                      @JsonProperty("email") String email,
                      @JsonProperty("password") String password,
                      @JsonProperty("clubId") Integer clubId) {
-        this.id = id;
+        this.id = null;
         this.firstName = firstName;
         this.lastName = lastName;
         this.streetAddress = streetAddress;
@@ -80,5 +87,7 @@ public class MemberDTO {
         this.clubId = clubId;
         this.boatIds = new ArrayList<>();
         this.berthAssignmentIds = new ArrayList<>();
+        this.createdAt = null;
+        this.updatedAt = null;
     }
 }

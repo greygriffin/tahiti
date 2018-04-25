@@ -152,9 +152,14 @@ public class BoatService
         return BoatDTO.builder()
             .id(entity.getId())
             .name(entity.getName())
-            //TODO: continue here with other values
+            .model(entity.getModel())
+            .registrationNumber(entity.getRegistrationNumber())
+            .length(entity.getLength())
+            .width(entity.getWidth())
             .ownerId(entity.getOwner().getId())
             .berthAssignmentId(entity.getBerthAssignment() == null ? null : entity.getBerthAssignment().getId())
+            .createdAt(toISO8601(entity.getCreatedAt()))
+            .updatedAt(toISO8601(entity.getUpdatedAt()))
             .build();
     }
 }

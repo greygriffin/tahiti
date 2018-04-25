@@ -144,6 +144,8 @@ public class ClubService
             .abbreviation(entity.getAbbreviation())
             // don't return members, there are too many
             // don't return berths, there are too many
+            .createdAt(toISO8601(entity.getCreatedAt()))
+            .updatedAt(toISO8601(entity.getUpdatedAt()))
             .build();
     }
 }

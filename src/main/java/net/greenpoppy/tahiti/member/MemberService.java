@@ -214,6 +214,8 @@ public class MemberService
             .clubId(entity.getClub().getId())
             .boatIds(entity.getBoats().stream().map(BoatEntity::getId).collect(Collectors.toList()))
             .berthAssignmentIds(entity.getBerthAssignments().stream().map(BerthAssignmentEntity::getId).collect(Collectors.toList()))
+            .createdAt(toISO8601(entity.getCreatedAt()))
+            .updatedAt(toISO8601(entity.getUpdatedAt()))
             .build();
     }
 }

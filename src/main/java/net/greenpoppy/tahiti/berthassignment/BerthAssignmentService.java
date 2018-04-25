@@ -155,7 +155,9 @@ public class BerthAssignmentService
             .id(entity.getId())
             .berthId(entity.getBerth().getId())
             .ownerId(entity.getOwner().getId())
-            .guardDuty(entity.getGuardDuty());
+            .guardDuty(entity.getGuardDuty())
+            .createdAt(toISO8601(entity.getCreatedAt()))
+            .updatedAt(toISO8601(entity.getUpdatedAt()));
         BoatEntity boatEntity = entity.getBoat();
         if (boatEntity != null) {
             builder = builder.boatId(boatEntity.getId());

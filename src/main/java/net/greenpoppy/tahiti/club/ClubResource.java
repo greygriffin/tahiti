@@ -43,8 +43,9 @@ public class ClubResource
     }
 
     @DeleteMapping(value = API_PREFIX + "/clubs/{clubId}")
-    public void delete(@PathVariable int clubId) {
+    public ResponseEntity delete(@PathVariable int clubId) {
         service.delete(clubId);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping(value = API_PREFIX + "/clubs",

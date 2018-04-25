@@ -11,10 +11,8 @@ import org.springframework.http.MediaType;
 
 public class BaseResource {
     protected static final String API_PREFIX = "/api";
-    protected static final MediaType APPLICATION_MERGE_PATCH_JSON_UTF8 =
-        new MediaType("application", "merge-patch+json", StandardCharsets.UTF_8);
     protected static final String APPLICATION_MERGE_PATCH_JSON_UTF8_VALUE =
-        "application/merge-patch+json; charset=utf-8";
+        "application/merge-patch+json; charset=utf-8";  // used in annotation so must be constant
 
     protected static final String NOT_FOUND = "not found";
     protected static final String INVALID_DATA = "invalid data";

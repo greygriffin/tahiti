@@ -6,14 +6,17 @@ import javax.persistence.*;
 import lombok.*;
 
 import net.greenpoppy.tahiti.berthassignment.BerthAssignmentEntity;
+import net.greenpoppy.tahiti.entity.BaseEntity;
 import net.greenpoppy.tahiti.member.MemberEntity;
 
 
 @Entity
 @Table(name="boats")
 @Data
+@EqualsAndHashCode(callSuper=true)
 @Builder
 public class BoatEntity
+    extends BaseEntity
     implements Serializable {
 
     @Id

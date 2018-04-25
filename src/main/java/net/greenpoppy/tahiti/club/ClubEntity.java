@@ -14,6 +14,7 @@ import net.greenpoppy.tahiti.member.MemberEntity;
 @Entity
 @Table(name="clubs")
 @Data
+@EqualsAndHashCode(callSuper=true)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

@@ -146,6 +146,8 @@ public class BerthService
             .name(entity.getName())
             .clubId(entity.getClub().getId())
             .berthAssignmentId(entity.getBerthAssignment() == null ? null : entity.getBerthAssignment().getId())
+            .createdAt(toISO8601(entity.getCreatedAt()))
+            .updatedAt(toISO8601(entity.getUpdatedAt()))
             .build();
     }
 }

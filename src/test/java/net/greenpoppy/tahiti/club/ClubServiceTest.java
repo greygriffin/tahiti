@@ -1,5 +1,6 @@
 package net.greenpoppy.tahiti.club;
 
+import net.greenpoppy.tahiti.service.ServiceTestBase;
 import net.greenpoppy.tahiti.service.Update;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,8 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class ClubServiceTest {
+public class ClubServiceTest
+    extends ServiceTestBase {
     private static final String NAME = "Merihaan Veneseura";
     private static final String ABBREVIATION = "MVS";
     private static final String OTHER_NAME = "Suomalainen Pursiseura";
@@ -43,6 +45,9 @@ public class ClubServiceTest {
         assertNotNull(created.getId());
         assertEquals(NAME, created.getName());
         assertEquals(ABBREVIATION, created.getAbbreviation());
+        assertNotNull(created.getCreatedAt());
+        assertNotNull(created.getUpdatedAt());
+        assertFalse(getInstant(created.getUpdatedAt()).isBefore(getInstant(created.getUpdatedAt())));
     }
 
     @Test
@@ -122,6 +127,8 @@ public class ClubServiceTest {
         assertEquals(created.getId(), updated.getId());
         assertEquals(OTHER_NAME, updated.getName());
         assertEquals(created.getAbbreviation(), updated.getAbbreviation());
+        assertEquals(created.getCreatedAt(), updated.getCreatedAt());
+        assertTrue(getInstant(updated.getUpdatedAt()).isAfter(getInstant(updated.getCreatedAt())));
         assertEquals(1, service.getCount());  // no extra clubs got created
         assertEquals(updated, service.get(created.getId()));   // was really updated
     }
@@ -134,6 +141,8 @@ public class ClubServiceTest {
         assertEquals(created.getId(), updated.getId());
         assertEquals(created.getName(), updated.getName());
         assertEquals(OTHER_ABBREVIATION, updated.getAbbreviation());
+        assertEquals(created.getCreatedAt(), updated.getCreatedAt());
+        assertTrue(getInstant(updated.getUpdatedAt()).isAfter(getInstant(updated.getCreatedAt())));
         assertEquals(1, service.getCount());  // no extra clubs got created
         assertEquals(updated, service.get(created.getId()));   // was really updated
     }
@@ -146,6 +155,8 @@ public class ClubServiceTest {
         assertEquals(created.getId(), updated.getId());
         assertEquals(OTHER_NAME, updated.getName());
         assertEquals(OTHER_ABBREVIATION, updated.getAbbreviation());
+        assertEquals(created.getCreatedAt(), updated.getCreatedAt());
+        assertTrue(getInstant(updated.getUpdatedAt()).isAfter(getInstant(updated.getCreatedAt())));
         assertEquals(1, service.getCount());  // no extra clubs got created
         assertEquals(updated, service.get(created.getId()));   // was really updated
     }

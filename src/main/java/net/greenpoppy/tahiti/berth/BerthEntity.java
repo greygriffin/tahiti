@@ -9,13 +9,16 @@ import lombok.*;
 
 import net.greenpoppy.tahiti.berthassignment.BerthAssignmentEntity;
 import net.greenpoppy.tahiti.club.ClubEntity;
+import net.greenpoppy.tahiti.entity.BaseEntity;
 
 
 @Entity
 @Table(name="berths")
 @Data
+@EqualsAndHashCode(callSuper=true)
 @Builder
 public class BerthEntity
+    extends BaseEntity
     implements Serializable {
 
     @Id

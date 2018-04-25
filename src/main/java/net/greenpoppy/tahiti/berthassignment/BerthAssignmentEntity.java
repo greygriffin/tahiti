@@ -8,6 +8,7 @@ import lombok.*;
 
 import net.greenpoppy.tahiti.berth.BerthEntity;
 import net.greenpoppy.tahiti.boat.BoatEntity;
+import net.greenpoppy.tahiti.entity.BaseEntity;
 import net.greenpoppy.tahiti.member.MemberEntity;
 
 
@@ -15,8 +16,10 @@ import net.greenpoppy.tahiti.member.MemberEntity;
 @Table(name="berth_assignments", uniqueConstraints={@UniqueConstraint(columnNames = {"boat_id" , "berth_id"}),
                                                     @UniqueConstraint(columnNames = {"berth_id", "owner_id"})})
 @Data
+@EqualsAndHashCode(callSuper=true)
 @Builder
 public class BerthAssignmentEntity
+    extends BaseEntity
     implements Serializable {
 
     @Id

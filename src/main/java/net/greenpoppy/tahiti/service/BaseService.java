@@ -1,5 +1,7 @@
 package net.greenpoppy.tahiti.service;
 
+import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +11,10 @@ import java.util.stream.StreamSupport;
 
 
 public class BaseService {
+
+    protected static String toISO8601(Timestamp timestamp) {
+        return (timestamp == null) ? "null" : timestamp.toInstant().toString();
+    }
 
     protected static Boolean isNotBlank(String str) {
         return !isBlank(str);
